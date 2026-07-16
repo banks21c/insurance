@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>손해보험이란? — 트립인슈</title>
+<style>
+  :root {
+    --ink: #16213a;
+    --ink-soft: #3c4a68;
+    --paper: #eef1f6;
+    --card: #fbfaf7;
+    --card-stub: #f2ede2;
+    --line: #ccd3de;
+    --line-strong: #aab2c2;
+    --accent: #a5752c;
+    --accent-ink: #ffffff;
+    --success: #2f7a4d;
+    --success-bg: #e6f4ea;
+    --shadow: 0 1px 2px rgba(22,33,58,0.06), 0 8px 24px rgba(22,33,58,0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #eef1f6;
+      --ink-soft: #b7c0d4;
+      --paper: #0f1522;
+      --card: #182135;
+      --card-stub: #1e2a44;
+      --line: #34405c;
+      --line-strong: #46536f;
+      --accent: #d7a750;
+      --accent-ink: #16213a;
+      --success: #7fd19f;
+      --success-bg: #163524;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #eef1f6;
+    --ink-soft: #b7c0d4;
+    --paper: #0f1522;
+    --card: #182135;
+    --card-stub: #1e2a44;
+    --line: #34405c;
+    --line-strong: #46536f;
+    --accent: #d7a750;
+    --accent-ink: #16213a;
+    --success: #7fd19f;
+    --success-bg: #163524;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"] {
+    --ink: #16213a;
+    --ink-soft: #3c4a68;
+    --paper: #eef1f6;
+    --card: #fbfaf7;
+    --card-stub: #f2ede2;
+    --line: #ccd3de;
+    --line-strong: #aab2c2;
+    --accent: #a5752c;
+    --accent-ink: #ffffff;
+    --success: #2f7a4d;
+    --success-bg: #e6f4ea;
+    --shadow: 0 1px 2px rgba(22,33,58,0.06), 0 8px 24px rgba(22,33,58,0.08);
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: light dark; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', 'Menlo', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .rise { animation: rise 0.6s cubic-bezier(.2,.7,.3,1) both; }
+    .rise-delay-1 { animation-delay: .08s; }
+    .rise-delay-2 { animation-delay: .16s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  }
+
+  /* ---------- header ---------- */
+  header { padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .header-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { display: flex; align-items: baseline; gap: 8px; }
+  .brand-mark { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+  .brand-sub { font-size: 12.5px; color: var(--ink-soft); }
+  .back-link { font-size: 13px; color: var(--ink-soft); text-decoration: none; }
+  .back-link:hover { color: var(--accent); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 48px 0 8px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .hero-title { font-size: 32px; font-weight: 800; letter-spacing: -0.01em; max-width: 22ch; }
+  .hero-desc { margin: 14px 0 0; color: var(--ink-soft); font-size: 15px; max-width: 60ch; }
+
+  /* ---------- section shell ---------- */
+  section { padding: 32px 0; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  .section-title { font-size: 20px; font-weight: 800; }
+  .section-note { font-size: 13px; color: var(--ink-soft); }
+
+  /* ---------- feature card ---------- */
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+  }
+  .feature-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .feature-list li { font-size: 14px; }
+  .feature-list .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+  .feature-list .v { color: var(--ink); }
+
+  /* ---------- type grid ---------- */
+  .type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .type-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 18px;
+  }
+  .type-card h3 { font-size: 14.5px; font-weight: 800; margin-bottom: 6px; }
+  .type-card p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+
+  @media (max-width: 760px) {
+    .type-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .type-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- comparison table ---------- */
+  .table-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+  thead th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--card-stub);
+  }
+  tbody th { font-weight: 700; color: var(--ink-soft); white-space: nowrap; }
+  tbody tr:last-child td, tbody tr:last-child th { border-bottom: none; }
+
+  @media (max-width: 700px) {
+    .table-card { overflow-x: auto; }
+    table { min-width: 520px; }
+  }
+
+  /* ---------- notice ---------- */
+  .terms-strip {
+    margin-top: 20px;
+    padding: 18px 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+  .terms-strip strong { color: var(--ink); }
+  .terms-strip ul { margin: 8px 0 0; padding-left: 18px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: none;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 12px 20px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(165,117,44,0.28); }
+  .btn:active { transform: translateY(0); }
+  .btn-block { width: 100%; margin-top: 18px; }
+
+  /* ---------- consult ---------- */
+  .consult { background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 36px 40px; max-width: 640px; }
+  .consult-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .consult-grid .full { grid-column: 1 / -1; }
+  .consult-grid label { display: block; font-size: 13px; font-weight: 700; color: var(--ink-soft); margin-bottom: 6px; }
+  .consult-grid input, .consult-grid textarea {
+    width: 100%;
+    background: var(--paper);
+    border: 1px solid var(--line-strong);
+    border-radius: 7px;
+    padding: 11px 13px;
+    font-size: 14px;
+    color: var(--ink);
+    font-family: inherit;
+  }
+  .consult-grid input:focus, .consult-grid textarea:focus { border-color: var(--accent); }
+  .consult-success {
+    display: none;
+    margin-top: 14px;
+    background: var(--success-bg);
+    color: var(--success);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  @media (max-width: 560px) {
+    .consult { padding: 28px 22px; }
+    .consult-grid { grid-template-columns: 1fr; }
+  }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; }
+  .footer-row { display: flex; flex-direction: column; gap: 8px; }
+  .footer-brand { font-weight: 800; font-size: 14px; }
+  .footer-note { font-size: 12px; color: var(--ink-soft); max-width: 60ch; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap header-row">
+      <div class="brand">
+        <span class="brand-mark">TRIPINSU</span>
+        <span class="brand-sub">손해보험 안내</span>
+      </div>
+      <a class="back-link" href="../">&larr; 전체 보험 비교로</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow rise">Non-Life Insurance Guide</div>
+      <h1 class="hero-title rise rise-delay-1">손해보험(損害保險)이란?</h1>
+      <p class="hero-desc rise rise-delay-2">손해보험은 우연한 사고로 인해 발생하는 재산상의 손해를 보상하는 보험입니다. 생명보험이 사람의 생사(生死)를 보험사고로 하는 것과 달리, 손해보험은 재산이나 신체에 발생한 '손해'를 보상한다는 점이 핵심입니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">주요 특징</h2>
+      </div>
+      <div class="feature-card rise">
+        <ul class="feature-list">
+          <li><div class="k">실손보상 원칙</div><div class="v">실제로 발생한 손해액 범위 내에서 보상하는 것이 원칙입니다. (초과보험, 이득금지 원칙 등이 적용됨)</div></li>
+          <li><div class="k">피보험이익</div><div class="v">보험의 목적물에 대해 경제적 이해관계가 있어야 보험계약이 성립합니다.</div></li>
+          <li><div class="k">단기 계약</div><div class="v">대부분 1년 단위로 계약을 갱신하는 형태가 많습니다 (생명보험 대비).</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">주요 종류</h2>
+      </div>
+      <div class="type-grid">
+        <div class="type-card rise">
+          <h3>화재보험</h3>
+          <p>건물, 재고자산 등의 화재 손해 보상</p>
+        </div>
+        <div class="type-card rise">
+          <h3>자동차보험</h3>
+          <p>대인·대물배상, 자기신체손해, 자기차량손해 등</p>
+        </div>
+        <div class="type-card rise">
+          <h3>해상보험</h3>
+          <p>선박이나 화물의 해상 운송 중 손해 보상</p>
+        </div>
+        <div class="type-card rise">
+          <h3>배상책임보험</h3>
+          <p>타인에게 끼친 손해에 대한 법적 배상책임 보상</p>
+        </div>
+        <div class="type-card rise">
+          <h3>보증보험</h3>
+          <p>채무불이행 등에 대한 보증</p>
+        </div>
+        <div class="type-card rise">
+          <h3>장기손해보험</h3>
+          <p>질병·상해 등을 보장하면서 저축 기능도 겸비 (실손의료보험, 운전자보험 등)</p>
+        </div>
+        <div class="type-card rise">
+          <h3>특종보험</h3>
+          <p>도난보험, 기계보험, 유리보험 등 특수한 위험 대상</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">생명보험과의 차이</h2>
+      </div>
+      <div class="table-card rise">
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>손해보험</th>
+              <th>생명보험</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>보상 대상</th>
+              <td>재산상 손해</td>
+              <td>사람의 생사</td>
+            </tr>
+            <tr>
+              <th>보상 방식</th>
+              <td>실손보상 (비례)</td>
+              <td>정액보상</td>
+            </tr>
+            <tr>
+              <th>중복계약 시</th>
+              <td>비례보상</td>
+              <td>각각 지급</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="terms-strip">
+        <strong>참고사항</strong>
+        <ul>
+          <li>한국에서는 삼성화재, DB손해보험, 현대해상, KB손해보험, 메리츠화재 등이 대표적인 손해보험사입니다.</li>
+          <li>이 페이지는 보험 전문가나 재무설계사가 작성한 자료가 아니므로, 실제 가입 결정 전에는 상품설명서를 꼼꼼히 확인하시고 보험설계사나 재무 전문가와 상담하시는 것을 권해드립니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="consult">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">전문가 상담 신청</h2>
+        <span class="section-note">데모 화면 — 실제 접수는 되지 않습니다</span>
+      </div>
+
+      <form class="consult" onsubmit="return submitConsult(event)">
+        <div class="consult-grid">
+          <div>
+            <label for="name">이름</label>
+            <input id="name" type="text" required placeholder="홍길동">
+          </div>
+          <div>
+            <label for="phone">연락처</label>
+            <input id="phone" type="tel" required placeholder="010-1234-5678">
+          </div>
+          <div>
+            <label for="planField">관심 상품</label>
+            <input id="planField" type="text" placeholder="예: 자동차보험">
+          </div>
+          <div>
+            <label for="country">여행 국가</label>
+            <input id="country" type="text" placeholder="예: 일본">
+          </div>
+          <div class="full">
+            <label for="msg">문의사항</label>
+            <textarea id="msg" rows="3" placeholder="궁금한 점을 자유롭게 남겨주세요."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-block">상담 신청하기</button>
+        <div class="consult-success" id="consultSuccess">신청이 접수되었습니다. 데모 화면이라 실제로 저장되거나 발송되지는 않습니다.</div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div class="footer-brand">TRIPINSU</div>
+      <p class="footer-note">
+        본 사이트는 프로토타입 데모이며 실제 보험 비교·중개 서비스가 아닙니다. 보험 상품 비교·추천에는 관련 법령에 따른
+        보험대리점 등록 또는 금융당국의 승인이 필요합니다.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function submitConsult(e) {
+      e.preventDefault();
+      document.getElementById('consultSuccess').style.display = 'block';
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
