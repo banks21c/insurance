@@ -110,6 +110,33 @@
   .back-link { font-size: 13px; color: var(--ink-soft); text-decoration: none; }
   .back-link:hover { color: var(--accent); }
 
+  /* ---------- category nav ---------- */
+  .category-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--paper);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .category-list { display: flex; gap: 10px; flex-wrap: wrap; }
+  .category-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .category-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .category-link.is-current { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+
   /* ---------- hero ---------- */
   .hero { padding: 48px 0 8px; }
   .eyebrow {
@@ -279,11 +306,19 @@
   <header>
     <div class="wrap header-row">
       <div class="brand">
-        <span class="brand-mark">TRIPINSU</span>
-        <span class="brand-sub">종신보험 · 변액보험 비교</span>
+        <span class="brand-sub">보험 가이드</span>
       </div>
     </div>
   </header>
+
+  <nav class="category-nav">
+    <div class="wrap category-list">
+      <a class="category-link is-current" href="./">종신보험</a>
+      <a class="category-link" href="../variable-life-insurance/">변액보험</a>
+      <a class="category-link" href="../non-life-insurance/">손해보험</a>
+      <a class="category-link" href="../indemnity-health-insurance/">실손의료보험</a>
+    </div>
+  </nav>
 
   <section class="hero">
     <div class="wrap">
