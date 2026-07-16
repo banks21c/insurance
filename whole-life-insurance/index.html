@@ -321,8 +321,8 @@
         var fallback = document.getElementById('app-header-fallback');
         var wrapper = document.createElement('div');
         wrapper.innerHTML = html;
-        fallback.replaceWith(wrapper);
-        var headerEl = wrapper.querySelector('.app-navbar');
+        fallback.replaceWith.apply(fallback, Array.from(wrapper.childNodes));
+        var headerEl = document.querySelector('.app-navbar');
         var catNav = document.querySelector('.category-nav');
         if (headerEl && catNav) { catNav.style.top = headerEl.offsetHeight + 'px'; }
       })
