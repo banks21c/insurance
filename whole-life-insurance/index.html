@@ -138,6 +138,10 @@
   .category-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
   .category-link.is-current { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
 
+  /* nextfinup 헤더(_header.html)는 Bootstrap의 반응형 .container를 쓰는데,
+     nextfinup 본문/이 페이지의 .wrap은 고정 1140px이라 폭을 맞춰 정렬한다. */
+  .app-navbar .container { max-width: 1140px; padding: 0 20px; margin: 0 auto; }
+
   /* ---------- hero ---------- */
   .hero { padding: 48px 0 8px; }
   .eyebrow {
