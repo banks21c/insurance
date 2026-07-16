@@ -184,14 +184,13 @@
   .explain-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
   .explain-list li { font-size: 14px; }
   .explain-list .k {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 3px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 4px;
   }
-  .explain-list .v { color: var(--ink); }
+  .explain-list .v { color: var(--ink-soft); font-size: 14px; }
 
   @media (max-width: 700px) {
     .explain-grid { grid-template-columns: 1fr; }
