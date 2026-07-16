@@ -307,7 +307,7 @@
 </head>
 <body>
 
-  <header id="app-header-fallback">
+  <header id="app-header-fallback" style="visibility: hidden;">
     <div class="wrap header-row">
       <div class="brand">
         <span class="brand-sub">보험 가이드</span>
@@ -325,7 +325,9 @@
         var catNav = document.querySelector('.category-nav');
         if (headerEl && catNav) { catNav.style.top = headerEl.offsetHeight + 'px'; }
       })
-      .catch(function () {});
+      .catch(function () {
+        document.getElementById('app-header-fallback').style.visibility = 'visible';
+      });
   </script>
 
   <nav class="category-nav">
